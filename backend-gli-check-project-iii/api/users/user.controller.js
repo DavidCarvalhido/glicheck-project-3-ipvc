@@ -97,7 +97,7 @@ module.exports = {
             if (!results) {
                 return res.json({
                     success: 0,
-                    data: "Utilizador invalido"
+                    data: "Utilizador inválido"
                 });
             }
             const result = compareSync(body.password, results.password);

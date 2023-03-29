@@ -1,8 +1,13 @@
 const { createPatient, getPatients, getPatientByPatientId, updatePatient, deletePatient } = require("./patient.service");
 
+const { sign } = require("jsonwebtoken");
+const { genSaltSync, hashSync } = require("bcrypt");
+
 module.exports = {
     createP: (req, res) => {
         const body = req.body;
+        const salt = genSaltSync(10);
+        body.password = hashSync(body.password, salt);
         createPatient(body, (err, results) => {
             if (err) {
                 console.log("[mysql error]", err);
@@ -10,7 +15,7 @@ module.exports = {
             }
             return res.json({
                 success: 1,
-                message: "Utente registado com sucesso!"
+                message: "Utilizador registado com sucesso!"
             });
         });
     },
@@ -36,7 +41,7 @@ module.exports = {
             if (!results) {
                 return res.json({
                     success: 0,
-                    message: "Utente não encontrado"
+                    message: "Utilizador não encontrado"
                 });
             }
             return res.json({
@@ -47,6 +52,8 @@ module.exports = {
     },
     updatePatient: (req, res) => {
         const body = req.body;
+        const salt = genSaltSync(10);
+        body.password = hashSync(body.password, salt);
         updatePatient(body, (err, results) => {
             if (err) {
                 console.log(err);
@@ -55,12 +62,12 @@ module.exports = {
             if (!results) {
                 return res.json({
                     success: 0,
-                    message: "Erro ao atualizar os dados do utente"
+                    message: "Erro ao atualizar os dados do utilizador"
                 });
             }
             return res.json({
                 success: 1,
-                message: "Dados do utente atulizado com sucesso"
+                message: "Dados do utilizador atualizados com sucesso"
             });
         });
     },
@@ -74,12 +81,12 @@ module.exports = {
             if (!results) {
                 return res.json({
                     succes: 0,
-                    message: "Utente não encontrado"
+                    message: "Utilizador não encontrado"
                 });
             }
             return res.json({
                 success: 1,
-                message: "Utente removido com sucesso"
+                message: "Utilizador removido com sucesso"
             });
         });
     }

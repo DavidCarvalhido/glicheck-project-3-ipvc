@@ -13,11 +13,11 @@ router.patch('/', updateUser);
 router.delete('/', deleteUser);
 router.post('/login', login);
 
-// Rotas do Patient
-router.post('/patient', createP);
-router.get('/patient', getPatients);
-router.get('/patient/:id', getPatientByPatientId);
-router.patch('/patient', updatePatient);
-router.delete('/patient/:id', deletePatient);
+// Rotas do User
+router.post('/new/user', createP);
+router.get('/users', getPatients);
+router.get('/user/:id', getPatientByPatientId);
+router.patch('/update/user/', updatePatient);
+router.delete('/delete/user/:id', deletePatient);
 
 module.exports = router;

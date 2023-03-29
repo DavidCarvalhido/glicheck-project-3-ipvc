@@ -148,20 +148,21 @@ export default {
 }
 
 .logo {
-  width: 80px;
+  width: 60px;
+  height: auto;
   padding-bottom: 20px;
 }
 
 hr {
   width: 100%;
-  border: 2px solid;
+  border: 1px solid;
   color: #474747;
 }
 
 .form-geral h1 {
   margin: 40px 0px 40px 0px;
   font-family: open sans, Arial, Helvetica Neue, sans-serif;
-  font-size: 2.7em;
+  font-size: 2.3em;
   text-transform: uppercase;
   line-height: 0.8;
   letter-spacing: .1em;
@@ -173,13 +174,66 @@ hr {
 }
 
 .form-group-buttons {
-  display:flex;
+  margin: auto;
+  display:inline;
 }
 
 .btn-login {
-  margin-top: 30px;
-  background: chocolate;
-  border-radius: 5px;
+  margin-top: 20px;
+  align-items: center;
+  background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
+  width: 100%;
+  border: 3px solid #c3c3c3;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: "Codec cold",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  height: 54px;
+  justify-content: center;
+  letter-spacing: .4px;
+  line-height: 1;
+  max-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-login:active {
+  outline: 0;
+}
+
+.btn-login:hover {
+  outline: 0;
+}
+
+.btn-login span {
+  transition: all 200ms;
+}
+
+.btn-login:hover span {
+  transform: scale(.9);
+  opacity: .75;
+}
+
+@media screen and (max-width: 991px) {
+  .btn-login {
+    font-size: 15px;
+    height: 50px;
+  }
+
+  .btn-login span {
+    line-height: 50px;
+  }
 }
 
 .invalid-feedback span {

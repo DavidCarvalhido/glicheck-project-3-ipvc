@@ -1,7 +1,7 @@
 const pool = require("../../config/database");
 
 module.exports = {
-    create: (data, callBack) => {
+    createUser: (data, callBack) => {
         pool.query(
             `INSERT INTO glicheck_projeto_3.user(username, password, role_user_id)
                 VALUES(?, ?, ?)`,
