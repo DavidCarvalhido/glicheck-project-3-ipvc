@@ -5,18 +5,18 @@
 </template>
 
 <script>
-import Nav from "../src/components/Nav.vue";
-import Sidebar from "../src/components/Sidebar.vue";
-import Footer from "../src/components/Footer.vue";
+import Navbar from '@/components/Navbar.vue'
+import Sidebar from '@/components/Sidebar.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    Nav,
+    Navbar,
     Sidebar,
-    Footer,
-  },
-};
+    Footer
+  }
+}
 </script>
 
 <style lang="scss">
@@ -28,7 +28,7 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
+nav {
   padding: 30px;
 
   a {

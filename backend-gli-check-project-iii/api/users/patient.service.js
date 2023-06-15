@@ -4,14 +4,33 @@ module.exports = {
     //-- OK
     createPatient: (data, callBack) => {
         pool.query(
-            `INSERT INTO glicheck_projeto_3.user(email, username, password, first_name, last_name, country_code_id, phone_number, address, role_user_id, created_date, updated_date, deleted_date, deleted_flag)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, current_timestamp(), ?, ?, 'N');`,
+            `INSERT INTO glicheck_projeto_3.user(
+                email,
+                username,
+                password,
+                first_name,
+                last_name,
+                user_weight,
+                user_height,
+                age,
+                country_code_id,
+                phone_number,
+                address,
+                role_user_id,
+                created_date,
+                updated_date,
+                deleted_date,
+                deleted_flag)
+            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, current_timestamp(), ?, ?, 'N');`,
             [
                 data.email,
                 data.username,
                 data.password,
                 data.first_name,
                 data.last_name,
+                data.user_weight,
+                data.user_height,
+                data.age,
                 data.country_code_id,
                 data.phone_number,
                 data.address,
@@ -60,7 +79,21 @@ module.exports = {
     updatePatient: (data, callBack) => {
         pool.query(
             `UPDATE glicheck_projeto_3.user
-                SET email=?, username=?, password=?, first_name=?, last_name=?, country_code_id=?, phone_number=?, address=?, updated_date=?, deleted_date=?, deleted_flag=?
+                SET
+                    email=?,
+                    username=?,
+                    password=?, 
+                    first_name=?,
+                    last_name=?,
+                    user_weight=?,
+                    user_height=?,
+                    age=?,
+                    country_code_id=?,
+                    phone_number=?,
+                    address=?,
+                    updated_date=?,
+                    deleted_date=?,
+                    deleted_flag=?
                 WHERE 1=1
                     AND id=?`,
             [
@@ -69,6 +102,9 @@ module.exports = {
                 data.password,
                 data.first_name,
                 data.last_name,
+                data.user_weight,
+                data.user_height,
+                data.age,
                 data.country_code_id,
                 data.phone_number,
                 data.address,
@@ -96,6 +132,29 @@ module.exports = {
                 if (error)
                     return callBack(error);
                 return callBack(null, results);
+            }
+        );
+    },
+    getPatientByUsername: (username, callBack) => {
+        pool.query(
+            `SELECT
+                username,
+                password,
+                first_name,
+                last_name,
+                user_weight,
+                user_height,
+                age
+            FROM glicheck_projeto_3.user, glicheck_projeto_3.user_role
+                WHERE 1=1
+                    AND user.user_role_id = user_role.id
+                    AND username = ?`,
+            [username],
+            (error, results, fields) => {
+                if (error) {
+                    callBack(error);
+                }
+                return callBack(null, results[0]);
             }
         );
     }
