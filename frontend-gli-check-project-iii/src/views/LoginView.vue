@@ -2,48 +2,40 @@
   <div class="geral">
     <section id="webkit">
       <div class="form-geral">
-        <router-link to="/">
-          <img class="logo" src="../assets/logo.png" alt="Glicheck">
-        </router-link>
-        <hr>
-        <h1>Glicheck</h1>
-        <div class="formulario">
-          <form @submit.prevent="handleSubmit">
-            <div class="form-group">
-              <input type="text" class="form-control" v-model.trim="$v.username.$model"
-                :class="{ 'is-invalid': $v.username.$error, 'is-valid': !$v.username.$invalid }"
-                placeholder="Nome de utilizador">
-              <div class="valid-feedback">Your username is valid</div>
-              <div class="invalid-feedback">
-                <span v-if="!$v.username.required">Username is required.</span>
-                <span v-if="!$v.username.isUnique">This username is already registered.</span>
-                <!--meter isto no register-->
-              </div>
+        <div class="form-splitter">
+          <!-- Left side -->
+          <div class="form-split">
+            <router-link to="/">
+              <img class="logo" src="../assets/logo.png" alt="Glicheck">
+            </router-link>
+            <hr>
+            <h1>Glicheck</h1>
+          </div>
+          <!-- Right side (Login form) -->
+          <div class="form-split glass-card">
+            <div class="formulario">
+              <form @submit.prevent="handleSubmit">
+                <h1 class="login-">Login</h1>
+                <div class="form-group">
+                  <input type="text" class="form-control" v-model="username" placeholder="Nome de utilizador">
+                </div>
+                <div class="form-group">
+                  <input type="password" id="password" class="form-control" v-model="password"
+                    placeholder="Palavra-passe">
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" id="showpassword" class="form-check-input" @click="toggleShowPassword"
+                    v-model="showpassword">
+                  <label class="form-check-label" for="showpassword">Mostrar palavra-passe</label>
+                </div>
+                <br>
+                <div class="form-group-buttons">
+                  <router-link to="/signup" class="signup-route">Não tem conta? Registe-se aqui.</router-link>
+                  <button class="btn-login">Iniciar sessão</button>
+                </div>
+              </form>
             </div>
-            <div class="form-group">
-              <input type="password" id="password" class="form-control" v-model.trim="$v.password.$model"
-                :class="{ 'is-invalid': $v.password.$error, 'is-valid': !$v.password.$invalid }"
-                placeholder="Palavra-passe" />
-              <div class="valid-feedback">Your password is valid</div>
-              <div class="invalid-feedback">
-                <span v-if="!$v.password.required">Password is required.</span>
-                <span v-if="!$v.password.minLength">{{ $v.password.$params.minLength.min }} characters minimum.</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="checkbox" id="showpassword" class="form-check-input" @click="toggleShowPassword"
-                v-model="showpassword">
-              <label class="form-check-label" for="showpassword">Mostrar palavra-passe</label>
-            </div>
-            <br>
-            <div class="form-group-buttons">
-              <router-link to="/register" style="color: #474747">Não tem conta? Registe-se aqui.</router-link>
-              <button class="btn-login">Iniciar sessão</button>
-            </div>
-            <div class="card">
-              <p>some text here</p>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </section>
@@ -64,7 +56,7 @@ export default {
       showpassword: false
     }
   },
-  validations: {
+  /* validations: {
     username: {
       required,
       isUnique(value) {
@@ -80,7 +72,7 @@ export default {
       required,
       minLength: minLength(8)
     }
-  },
+  }, */
   methods: {
     async handleSubmit() {
       const response = await axios.post('login', {
@@ -115,7 +107,7 @@ export default {
   }
 };
 </script>
-  
+
 <style scoped>
 #webkit {
   background: linear-gradient(24deg, #2c73c5, #cc7493, #ec8b5f);
@@ -187,19 +179,25 @@ export default {
 .form-geral {
   margin: auto;
   margin-top: 4.5rem;
-  width: 25%;
   text-align: center;
   color: #474747;
 }
 
 .logo {
-  width: 120px;
+  width: 60%;
   padding-bottom: 20px;
+}
+
+.form-splitter {
+  display: flex;
+}
+
+.form-split {
+  margin: 50px 200px;
 }
 
 hr {
   width: 100%;
-  border: 1px solid;
   color: #474747;
 }
 
@@ -207,7 +205,6 @@ hr {
   margin: 40px 0px 40px 0px;
   font-family: open sans, Arial, Helvetica Neue, sans-serif;
   font-size: 2.3em;
-  text-transform: uppercase;
   line-height: 0.8;
   letter-spacing: .1em;
   color: #3b3b3b;
@@ -217,9 +214,31 @@ hr {
   margin-top: 70px;
 }
 
+input {
+  padding: 0 20px;
+  border: none;
+}
+
+input:focus {
+  outline: 3px solid #474747;
+}
+
+.form-control {
+  margin: 10px 0;
+  width: 450px;
+  height: 45px;
+  border-radius: 8px;
+  font-size: 01em;
+}
+
 .form-group-buttons {
   margin: auto;
   display: inline;
+}
+
+.signup-route {
+  /* display: flex; */
+  color: #474747;
 }
 
 .btn-login {
@@ -246,7 +265,6 @@ hr {
   padding-right: 20px;
   padding-top: 3px;
   text-decoration: none;
-  text-transform: uppercase;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -269,6 +287,29 @@ hr {
   opacity: .75;
 }
 
+.glass-card {
+  /* background-color: rgba(255, 255, 255, 0.35); */
+  /* padding: 300px; mexer nisto para ter-lo na direita toda*/
+  backdrop-filter: blur(15px);
+  /* border: 1px solid grey; */
+  /* box-shadow: -1px 5px 5px #313131; */
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.35);
+  clip-path: polygon(16% 0, 100% 0, 100% 100%, 0% 100%);
+  box-shadow: 0 8px 32px 0 #1f26875e;
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  padding: 350px 429px;
+  top: -122px;
+  left: -171px;
+  z-index: -1;
+}
+
 @media screen and (max-width: 991px) {
   .btn-login {
     font-size: 15px;
@@ -289,16 +330,6 @@ hr {
   /* .form-check-input {
     left: 0px;
   } */
-
-.card {
-  border-bottom: 100px solid red;
-  border-left: 50px solid transparent;
-  height: 0;
-  width: 100px;
-  display: flex;
-  background-color: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(15px);
-}
 
 @media screen and (max-width: 800px) {
   #webkit {

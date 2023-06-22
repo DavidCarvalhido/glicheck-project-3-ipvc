@@ -12,16 +12,15 @@ module.exports = {
                 last_name,
                 user_weight,
                 user_height,
-                age,
+                user_age,
                 country_code_id,
                 phone_number,
-                address,
                 role_user_id,
                 created_date,
                 updated_date,
                 deleted_date,
                 deleted_flag)
-            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, current_timestamp(), ?, ?, 'N');`,
+            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, current_timestamp(), ?, ?, 'N');`,
             [
                 data.email,
                 data.username,
@@ -30,10 +29,9 @@ module.exports = {
                 data.last_name,
                 data.user_weight,
                 data.user_height,
-                data.age,
+                data.user_age,
                 data.country_code_id,
                 data.phone_number,
-                data.address,
                 data.role_user_id,
                 data.created_date,
                 data.updated_date,
@@ -87,10 +85,9 @@ module.exports = {
                     last_name=?,
                     user_weight=?,
                     user_height=?,
-                    age=?,
+                    user_age=?,
                     country_code_id=?,
                     phone_number=?,
-                    address=?,
                     updated_date=?,
                     deleted_date=?,
                     deleted_flag=?
@@ -104,10 +101,9 @@ module.exports = {
                 data.last_name,
                 data.user_weight,
                 data.user_height,
-                data.age,
+                data.user_age,
                 data.country_code_id,
                 data.phone_number,
-                data.address,
                 new Date(),
                 data.deleted_date,
                 data.deleted_flag,
@@ -144,7 +140,7 @@ module.exports = {
                 last_name,
                 user_weight,
                 user_height,
-                age
+                user_age
             FROM glicheck_projeto_3.user, glicheck_projeto_3.user_role
                 WHERE 1=1
                     AND user.user_role_id = user_role.id
