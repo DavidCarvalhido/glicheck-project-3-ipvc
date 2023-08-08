@@ -3,7 +3,7 @@
     <section class="background-page">
       <div class="form-geral">
         <router-link to="/">
-          <img class="logo" src="../assets/logo.png" alt="Glicheck">
+          <img class="logo" src="../assets/images/logo.png" alt="Glicheck">
         </router-link>
         <hr>
         <h1>Sign up</h1>
@@ -150,7 +150,7 @@ export default {
 }
 
 hr {
-  width: 60%;
+  width: 100%;
   color: #3b2e30;
 }
 
@@ -242,7 +242,7 @@ input:focus {
   margin: 20px auto 50px;
   align-items: center;
   background-image: linear-gradient(135deg, #f34079 40%, #fc894d);
-  width: 85%;
+  width: 100%;
   border: 3px solid #c3c3c3;
   border-radius: 10px;
   box-sizing: border-box;
@@ -297,12 +297,7 @@ input:focus {
     color: #3b3b3b;
   }
 
-  .signup-btn {
-    font-size: 15px;
-    height: 50px;
-  }
-
-  .signup-btn span {
+   .signup-btn span {
     line-height: 50px;
   }
 }

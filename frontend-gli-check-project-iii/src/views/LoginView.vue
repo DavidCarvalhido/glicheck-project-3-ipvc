@@ -6,7 +6,7 @@
           <!-- Left side -->
           <div class="form-split">
             <router-link to="/">
-              <img class="logo" src="../assets/logo.png" alt="Glicheck">
+              <img class="logo" src="../assets/images/logo.png" alt="Glicheck">
             </router-link>
             <hr>
             <h1>Glicheck</h1>
@@ -18,6 +18,7 @@
                 <h1 class="login-">Login</h1>
                 <div class="form-group">
                   <input type="text" class="form-control" v-model="username" placeholder="Nome de utilizador">
+                  <!-- o span de "falta o nome", meter no css com ::before. para nao mover a estrutura do form -->
                 </div>
                 <div class="form-group">
                   <input type="password" id="password" class="form-control" v-model="password"

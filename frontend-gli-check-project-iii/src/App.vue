@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'
-import Sidebar from '@/components/Sidebar.vue'
-import Footer from '@/components/Footer.vue'
+import Header from '@/components/TheHeader.vue'
+import Sidebar from '@/components/TheSidebar.vue'
+import Footer from '@/components/TheFooter.vue'
 
 export default {
   name: 'App',
   components: {
-    Navbar,
+    Header,
     Sidebar,
     Footer
   }
@@ -20,6 +20,14 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* width: 100%;
+  min-height: 100%; */
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -3,6 +3,7 @@ import NotFoundView from '../views/NotFoundView.vue'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignUpView from '../views/SignUpView.vue'
+import DashboardView from '../views/DashboardView.vue'
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
     // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   // },
   // adicionar aqui novas routes...
+  {
+    path: '/page',
+    name: 'page',
+    component: DashboardView
+  },
   {
     path: '/:pathMatch(.*)',
     name: 'NotFound',

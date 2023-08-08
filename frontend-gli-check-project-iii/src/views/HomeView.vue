@@ -4,7 +4,7 @@
       <!-- Glicheck logo -->
       <div class="navbar-logo">
         <a href="/">
-          <img src="../assets/main_logo.png" alt="Navbar logo" class="navbar-icon">
+          <img src="../assets/images/main_logo.png" alt="Navbar logo" class="navbar-icon">
         </a>
       </div>
       <!-- Group of links for login and sign up -->
@@ -23,7 +23,7 @@
 
 <script>
 // @ is an alias to /src
-import HomeBody from '@/components/HomeBody.vue'
+import HomeBody from '@/components/TheHomeBody.vue'
 
 export default {
   name: 'HomeView',
@@ -114,6 +114,7 @@ export default {
 
 .navbar-icon {
   height: 40px;
+  width: auto;
 }
 
 .navbar-links-item {
