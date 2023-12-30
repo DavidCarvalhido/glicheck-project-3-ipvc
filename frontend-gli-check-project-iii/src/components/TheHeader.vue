@@ -1,19 +1,13 @@
 <template>
   <nav class="navbar">
-    <div class="navbar-wrapper">
-      <router-link to="/page">
-        <img src="../assets/images/logo.png" alt="Navbar icon" class="navbar-icon">
-      </router-link>
+    <!-- Left part of navbar -->
+    <div>Dashboard</div>
+    <div class="menu-group">
+      <!-- Notification icon -->
+      <div class="notice-button"><img src="../assets/icons/notification_icon.svg" class="notification-icon" alt="Notifications"></div>
+      <!-- Dropdown menu for account -->
+      asdasd
     </div>
-    <ul class="navbar-items">
-      <div class="menu">
-        <li><a href="#"></a>
-          <!-- <img src="../assets/icons/notification_icon.svg" alt="notification icon"> -->
-        </li>
-        <!-- DROPDOWN MENU -->
-        <NavDropdown title="David Carvalhido"/>
-      </div>
-    </ul>
   </nav>
 </template>
 
@@ -34,71 +28,25 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 .navbar {
   display: flex;
   align-items: center;
+  width: 100vw;
+  padding: 15px;
+  background: rgb(161, 161, 201);
   justify-content: space-between;
-  padding: 10px;
-  background-color: lightslategrey;
-  border-bottom: 2px;
 }
 
-.navbar-icon {
-  width: 40px;
-}
-
-.navbar-items {
+.menu-group {
   display: flex;
 }
 
-li {
-  list-style: none;
-}
-
-.menu {
-  display: flex;
-  gap: 1.0em;
-}
-
-.menu li:hover {
+.notice-button {
   cursor: pointer;
-  /* background-color: blue; */
-  transition: 0.3s ease;
 }
 
-.menu li {
-  padding: 5px 14px;
-}
-
-.user-menu {
-  position: relative;
-}
-
-.dropdown {
-  background-color: rgb(140, 9, 9);
-  padding: 1.0em 0;
-  position: absolute;
-  display: none;
-  border-radius: 8px;
-  top: 35px;
-}
-
-.dropdown li+li {
-  margin-top: 10px;
-}
-
-.dropdown li {
-  padding: 0.5em 1em;
-  width: 8em;
-  text-align: center;
-}
-
-.dropdown li:hover {
-  background-color: #4c9e9e;
-}
-
-.user-menu:hover .dropdown {
-  display: block;
+.notification-icon {
+  width: 20px;
 }
 </style>
